@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>黙男乱記｜Official</title>
+  <meta name="description" content="黙男乱記（だーまん・らんき）の公式ポータル。Royal Road、カクヨム、小説家になろう、アルファポリスで公開中の作品へ。">
+  <meta name="theme-color" content="#0b0b0d">
+  <style>
+    :root{
+      --bg:#09090b;
+      --panel:#111216;
+      --panel2:#16171c;
+      --text:#f2efe8;
+      --muted:#a7a39a;
+      --line:#2a2b31;
+      --accent:#b8935c;
+      --accent2:#e1c08b;
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(184,147,92,.11), transparent 35rem),
+        linear-gradient(180deg,#09090b 0%,#0d0e11 100%);
+      color:var(--text);
+      font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+      line-height:1.8;
+      letter-spacing:.03em;
+    }
+    a{color:inherit}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+    header{
+      min-height:72vh;
+      display:grid;
+      align-items:center;
+      border-bottom:1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+    }
+    header:after{
+      content:"";
+      position:absolute;
+      right:-8vw;
+      bottom:-8vw;
+      width:34vw;
+      height:34vw;
+      border:1px solid rgba(184,147,92,.14);
+      transform:rotate(18deg);
+      pointer-events:none;
+    }
+    .eyebrow{
+      color:var(--accent2);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.75rem;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      margin-bottom:1.1rem;
+    }
+    h1{
+      font-size:clamp(3rem,9vw,7rem);
+      line-height:1;
+      margin:0;
+      font-weight:500;
+      letter-spacing:.08em;
+    }
+    .reading{
+      margin-top:1rem;
+      color:var(--muted);
+      font-size:clamp(.9rem,2vw,1.1rem);
+    }
+    .lead{
+      max-width:760px;
+      margin-top:2.4rem;
+      color:#d6d1c7;
+      font-size:clamp(1rem,2vw,1.18rem);
+    }
+    .english-intro{
+      margin-top:1.45rem;
+      max-width:760px;
+      padding-left:18px;
+      border-left:2px solid var(--accent);
+      color:#e2ddd3;
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:clamp(.96rem,1.8vw,1.08rem);
+      line-height:1.8;
+      letter-spacing:0;
+    }
+    .english-intro p{margin:0 0 .35rem}
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:2rem;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 20px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      text-decoration:none;
+      transition:.2s ease;
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.9rem;
+      letter-spacing:.04em;
+    }
+    .btn:hover{
+      border-color:var(--accent);
+      transform:translateY(-2px);
+      background:rgba(184,147,92,.08);
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:#111;
+      border-color:var(--accent);
+      font-weight:700;
+    }
+    main{padding:86px 0 110px}
+    section+section{margin-top:88px}
+    .section-kicker{
+      color:var(--accent2);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.72rem;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      margin-bottom:.5rem;
+    }
+    h2{
+      margin:.2rem 0 1.6rem;
+      font-weight:500;
+      font-size:clamp(1.8rem,4vw,3rem);
+    }
+    .platforms{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+    .platform{
+      min-height:190px;
+      padding:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,var(--panel2),var(--panel));
+      text-decoration:none;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:.2s ease;
+    }
+    .platform:hover{
+      border-color:var(--accent);
+      transform:translateY(-3px);
+    }
+    .platform small{
+      color:var(--muted);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    }
+    .platform strong{
+      display:block;
+      margin-top:8px;
+      font-size:1.25rem;
+      font-weight:600;
+    }
+    .arrow{
+      color:var(--accent2);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:1.25rem;
+    }
+    .work-list{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+    .work-card{
+      display:flex;
+      flex-direction:column;
+      min-height:335px;
+      padding:32px;
+      border:1px solid var(--line);
+      background:linear-gradient(150deg,rgba(184,147,92,.07),rgba(17,18,22,.98) 55%);
+      position:relative;
+      overflow:hidden;
+    }
+    .work-card::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;
+      width:56px;height:2px;
+      background:var(--accent);
+    }
+    .work-meta{
+      margin:0 0 22px;
+      color:var(--accent2);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.73rem;
+      line-height:1.5;
+      letter-spacing:.13em;
+    }
+    .work-card h3,.essay-card h3{
+      margin:0 0 15px;
+      font-size:clamp(1.25rem,2.3vw,1.72rem);
+      font-weight:500;
+      line-height:1.65;
+      overflow-wrap:anywhere;
+    }
+    .work-card h3 span{
+      display:block;
+      color:var(--muted);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.68em;
+      margin-top:4px;
+    }
+    .work-card p,.essay-card p{margin:0;color:var(--muted)}
+    .work-card .btn{align-self:flex-start;margin-top:auto;margin-bottom:0}
+    .work-card .description{margin-bottom:24px}
+    .latest-update{
+      padding:15px 18px;
+      border:1px solid rgba(184,147,92,.35);
+      background:rgba(184,147,92,.055);
+      margin-bottom:22px;
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .latest-label{
+      color:#17120b;
+      background:var(--accent2);
+      padding:3px 10px;
+      border-radius:2px;
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      letter-spacing:.08em;
+      font-size:.85rem;
+      font-weight:800;
+      line-height:1.5;
+    }
+    .latest-date{
+      color:var(--text);
+      font-size:.9rem;
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-variant-numeric:tabular-nums;
+    }
+    .essay-card{
+      padding:32px;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      align-items:center;
+      gap:28px;
+    }
+    .essay-card .work-meta{margin-bottom:10px}
+    .note{
+      margin-top:18px;
+      color:var(--muted);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.86rem;
+    }
+    footer{
+      border-top:1px solid var(--line);
+      padding:34px 0 46px;
+      color:var(--muted);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:.82rem;
+    }
+    @media(max-width:800px){
+      header{min-height:66vh}
+      .platforms{grid-template-columns:1fr 1fr}
+      .work-list{grid-template-columns:1fr}
+      .work-card{min-height:275px}
+    }
+    @media(max-width:520px){
+      .wrap{width:min(calc(100% - 24px),var(--max))}
+      .platforms{grid-template-columns:1fr}
+      .platform{min-height:135px}
+      .work-card,.essay-card{padding:24px}
+      .essay-card{grid-template-columns:1fr}
+      .essay-card .btn{justify-self:start}
+      main{padding-top:64px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .btn,.platform{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">Official Author Portal</div>
+      <h1>黙男乱記</h1>
+      <div class="reading">だーまん・らんき</div>
+      <p class="lead">趣味で小説を書いています。</p>
+      <div class="english-intro" lang="en">
+        <p>Hi! I'm a Japanese fiction writer. ⚔️</p>
+        <p>Thanks for stopping by!</p>
+        <p>You can find my stories in both Japanese and English on my website.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn primary" href="#works">作品を読む</a>
+        <a class="btn" href="https://x.com/dersan777" target="_blank" rel="noopener">Xを見る</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="works" aria-labelledby="works-title">
+      <div class="section-kicker">Featured Works</div>
+      <h2 id="works-title">代表作・最新作</h2>
+      <div class="work-list">
+        <article class="work-card" lang="en">
+          <div class="work-meta">ROYAL ROAD · ENGLISH</div>
+          <h3>The Sin of the Blade — A Bakumatsu Samurai in a World Without a Hero</h3>
+          <p class="description">Kyoto, 1864. Jin, a samurai assassin from the Bakumatsu era, is thrust into another world at war with the Demon King's armies. Armed with only his katana, he must carve a path for the Hero.</p>
+          <div class="latest-update" id="latest-royalroad" aria-label="Latest published: October 19, 2026">
+            <span class="latest-label">NEW!!</span>
+            <time class="latest-date" datetime="2026-10-19">October 19, 2026</time>
+          </div>
+          <a class="btn" href="https://www.royalroad.com/fiction/198087/the-sin-of-the-blade-a-bakumatsu-samurai-in-a" target="_blank" rel="noopener noreferrer" aria-label="Read The Sin of the Blade on Royal Road">Read on Royal Road ↗</a>
+        </article>
+        <article class="work-card">
+          <div class="work-meta">KAKUYOMU · JAPANESE</div>
+          <h3>剣と魔法の世界を2180年の兵士が未来の知識とテクノロジーで最強する。魔法？　非効率ですね。</h3>
+          <p class="description">2180年の兵士が、剣と魔法の異世界へ。未来の知識とテクノロジーを武器に挑むSFファンタジー。</p>
+          <div class="latest-update" id="latest-kakuyomu" aria-label="最新公開日：2026年10月9日">
+            <span class="latest-label">NEW!!</span>
+            <time class="latest-date" datetime="2026-10-09">2026年10月9日公開</time>
+          </div>
+          <a class="btn" href="https://kakuyomu.jp/works/2912051604574171459" target="_blank" rel="noopener noreferrer" aria-label="剣と魔法の世界を2180年の兵士が未来の知識とテクノロジーで最強する。魔法？　非効率ですね。をカクヨムで読む">カクヨムで読む ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="essay" aria-labelledby="essay-title">
+      <div class="section-kicker">Essay</div>
+      <h2 id="essay-title">エッセイ</h2>
+      <article class="essay-card">
+        <div>
+          <div class="work-meta">KAKUYOMU · JAPANESE</div>
+          <h3>「ダークファンタジーとは何か」ベルセルク育ちの結論</h3>
+          <p>ダークファンタジーをどう定義するのか。『ベルセルク』を読み続けてきた視点から考えるエッセイ。</p>
+        </div>
+        <a class="btn" href="https://kakuyomu.jp/works/11054822664862721658" target="_blank" rel="noopener noreferrer" aria-label="エッセイ「ダークファンタジーとは何か」をカクヨムで読む">エッセイを読む ↗</a>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-kicker">About</div>
+      <h2>黙男乱記について</h2>
+      <p class="lead" style="margin-top:0">
+        複数の小説投稿サイトで作品を公開しています。<br>
+        このサイトは、作品・更新情報・各掲載先をひとつにまとめる公式ポータルです。
+      </p>
+    </section>
+
+    <section id="platforms">
+      <div class="section-kicker">Read</div>
+      <h2>掲載サイト</h2>
+
+      <div class="platforms">
+        <a class="platform" href="https://www.royalroad.com/profile/1099087" target="_blank" rel="noopener">
+          <div><small>ENGLISH</small><strong>Royal Road</strong></div>
+          <span class="arrow">↗</span>
+        </a>
+
+        <a class="platform" href="https://kakuyomu.jp/users/DERMAN2025" target="_blank" rel="noopener">
+          <div><small>JAPANESE</small><strong>カクヨム</strong></div>
+          <span class="arrow">↗</span>
+        </a>
+
+        <a class="platform" href="https://mypage.syosetu.com/2987426/" target="_blank" rel="noopener">
+          <div><small>JAPANESE</small><strong>小説家になろう</strong></div>
+          <span class="arrow">↗</span>
+        </a>
+
+        <a class="platform" href="https://www.alphapolis.co.jp/author/detail/415737555" target="_blank" rel="noopener">
+          <div><small>JAPANESE</small><strong>アルファポリス</strong></div>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+
+      <p class="note">
+        各サービスの作者ページへ移動します。作品一覧からお好きな小説を選んでください。
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> 黙男乱記 / Darman Ranki
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // GitHub Actions updates latest.json when newly published chapters are found.
+    // The checked-in dates remain visible for offline / file:// previews.
+    async function showLatestEpisodes() {
+      try {
+        const response = await fetch("./latest.json", { cache: "no-store" });
+        if (!response.ok) return;
+        const data = await response.json();
+        for (const site of ["royalroad", "kakuyomu"]) {
+          const episode = data[site];
+          const card = document.getElementById("latest-" + site);
+          if (!card || !episode || typeof episode.published_date !== "string") continue;
+          const iso = episode.published_date;
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) continue;
+          const date = new Date(iso + "T12:00:00Z");
+          if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== iso) continue;
+          const label = site === "royalroad"
+            ? new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "Asia/Tokyo" }).format(date)
+            : new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", timeZone: "Asia/Tokyo" }).format(date) + "公開";
+          const time = card.querySelector("time");
+          time.dateTime = iso;
+          time.textContent = label;
+          card.setAttribute("aria-label", (site === "royalroad" ? "Latest published: " : "最新公開日：") + label);
+        }
+      } catch (err) {
+        // Offline / file:// previews keep the last checked-in dates.
+      }
+    }
+    showLatestEpisodes();
+  </script>
+</body>
+</html>
