@@ -1,0 +1,70 @@
+name: Update chapters and publish website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - latest.json
+      - scripts/**
+      - .github/workflows/refresh-and-publish.yml
+  schedule:
+    # Every hour at minute 23, UTC. Actual runs can be delayed by GitHub.
+    - cron: '23 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: author-website-pages
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check both story pages
+        run: python scripts/update_latest.py
+
+      - name: Save latest known chapter data
+        run: |
+          git add latest.json
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Update published chapters'
+            git push
+          fi
+
+      - name: Prepare static website
+        run: |
+          mkdir -p _site
+          cp index.html latest.json _site/
+          touch _site/.nojekyll
+
+      - name: Set up GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy updated website
+        id: deployment
+        uses: actions/deploy-pages@v4
